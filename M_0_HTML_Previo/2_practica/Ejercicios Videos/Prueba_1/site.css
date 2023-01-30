@@ -1,0 +1,30 @@
+h1{
+    background-color: aquamarine;
+    font-family: 'Courier New', Courier, monospace;
+    color:white;
+}
+h2{
+    background-color: rgb(red, green, blue);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:white;
+}
+h3{
+    background-color:blanchedalmond;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+}
+h4{
+    background-color:brown;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:white;
+}
+h5{
+    background-color:darkcyan;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
+}
+h6{
+    background-color:fuchsia;
+    font-family:'Times New Roman', Times, serif;
+    color:white;
+}

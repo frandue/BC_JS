@@ -1,0 +1,30 @@
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+h2{
+    color: blue;
+}
+.container{
+    background-color: red;
+    color: white;
+}
+#simpletext{
+    font-size: 12px;
+    background-color: palevioletred;
+}
+div{
+    width: 300px;
+    background-color: yellowgreen;
+}
+div p{
+    background-color: blueviolet;
+    color: wheat;
+}
+.box{
+    height: 100px;
+    border: solid 1px black;
+    background-color: pink;
+    color: white;
+    text-align: center;
+}
+.box .box-item
