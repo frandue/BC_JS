@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Datos de usuario</title>
+    <!--Vinculamos el enlace del estilo que queremos dar -->
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="img"></div>
+        <!-- Añado la imagen -->
+        <img src="img/ruta_imagen.png" id="avatar" alt="avatar" class="avatar" />
+        <div class="data">
+
+        <!--Creamos la caja de Nombre-->
+        <label for="name"><b>Name</b></label>
+        <input type="text" id="name" name="name" />
+
+        <!--Creamos la caja de apellido-->
+        <label for="lastName"><b>Last name</b></label>
+        <input type="text" id="lastName" name="lastName" />   
+
+        <!--Creamos la caja de telefono-->
+        <label for="PhoneNumber"><b>Teléfono</b></label>
+        <input type="text" id="PhoneNumber" name="PhoneNumber" /> 
+
+         <!-- Añado el archivo de JS -->
+        <script src="js/demo.js"></script>
+    
+        <!-- Añado un boton -->
+        <div id="actions">
+        <!-- Mostrar por consola el input añadido -->  
+        <button type="button"
+        onclick="console.log(document.querySelectorAll('for').value)">
+        Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
