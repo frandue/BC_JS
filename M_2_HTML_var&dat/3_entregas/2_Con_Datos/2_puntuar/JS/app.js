@@ -12,16 +12,10 @@ document.getElementById("img-hotel").src = hotel.img;
 
 // Objetivo 2 [Puntuación del hotel]
 var rating = prompt("Puntuación: del 1 al 5");
- if (typeof rating === "undefined")
-  var rating = prompt("Puntuación: del 1 al 5");
-
- else (typeof rating === "string")
-  var rating = prompt("Puntuación: del 1 al 5");
-
- else (rating>5)
-  var rating = prompt("Puntuación: del 1 al 5");
-
- else (rating<1)
-  var rating = prompt("Puntuación: del 1 al 5");
 
 document.getElementById("rating").innerHTML = rating + " estrellas";
+
+
+
+
+
