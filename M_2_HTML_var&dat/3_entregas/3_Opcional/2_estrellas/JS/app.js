@@ -45,8 +45,25 @@ document.getElementById("img-hotel").src = hoteles[selectedHotel].img;
 // diff
 
 // Objetivo 2 [Puntuación del hotel]
-var rating = prompt("Puntuación: del 1 al 5");
-document.getElementById("rating").innerHTML = rating + " estrellas";
+//var rating = prompt("Puntuación: del 1 al 5");
+//document.getElementById("rating").innerHTML = rating + " estrellas";
+
+var stars = {
+  una:
+    "<span>&#9733;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>",
+  dos:
+    "<span>&#9733;</span><span>&#9733;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>",
+  tres:
+    "<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span><span>&#9734;</span>",
+  cuatro:
+    "<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>",
+  cinco:
+    "<span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>",
+};
+
+var rating = prompt("Puntuación: una, dos, tres, cuatro o cinco estrellas");
+// diff
+document.getElementById("rating").innerHTML = stars[rating];
 
 // Objetivo 3 [Usuario anónimo]
 var anonymous = confirm("¿Quiere que la reseña sea anónima?");
