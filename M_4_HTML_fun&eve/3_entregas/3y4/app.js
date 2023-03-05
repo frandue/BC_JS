@@ -1,50 +1,51 @@
-//Funcion suma(al poner un + me los concatenaba)
-function suma (a,b){
- return (-1*(-1*a - 1*b)) ;
+// Calculadora
+
+// INPUTS
+var numA = () => parseInt(document.getElementById("varA").value);
+var numB = () => parseInt(document.getElementById("varB").value);
+
+//OPERATIONS
+var sum = () => numA() + numB();
+var sub = () => numA() - numB();
+var mult = () => numA() * numB();
+var div = () => numA() / numB();
+
+//RESULT
+var ResultSum = () => document.getElementById("result").innerText = sum();
+var ResultSub = () => document.getElementById("result").innerText = sub();
+var ResultDiv = () => document.getElementById("result").innerText = div();
+var ResultMult = () => document.getElementById("result").innerText = mult();
+
+//EVENTS
+document.getElementById("suma").addEventListener("click", ResultSum);
+document.getElementById("resta").addEventListener("click", ResultSub);
+document.getElementById("div").addEventListener("click", ResultDiv);
+document.getElementById("multi").addEventListener("click", ResultMult);
+
+//CONDITIONAL
+function ifSum () {
+  if (isNaN(numA()) || isNaN(numB())){
+    document.getElementById("result").innerText = "Error, incluir dos números para sumar.";
+  };
 };
-//Funcion resta
- function resta (a,b){
- return (a - b) ;
+function ifSub () {
+  if (isNaN(numA()) || isNaN(numB())){
+    document.getElementById("result").innerText = "Error, incluir dos números para restar.";
+  };
 };
-//Funcion multiplicacion
-function multiplicacion (a,b){
- return (a * b) ;
+function ifDiv () {
+  if (isNaN(numA()) || isNaN(numB())){
+    document.getElementById("result").innerText = "Error, incluir dos números para dividir.";
+  };
+}
+function ifMult () {
+  if (isNaN(numA()) || isNaN(numB())){
+    document.getElementById("result").innerText = "Error, incluir dos números para multiplicar";
+  };
 };
-//Funcion divisio
-function division (a,b){
- return (a / b) ;
-};    
-//Prgunto que operacion se quiere realizar     
-//const opera = prompt ("Que operacion quieres : suma, resta, multiplicacion o division");
-//Sconsole.log(opera);
 
-//const varA = prompt ("Valor del primer numero");
-
-//const varB = prompt ("Valor del segundo numero");
-
-var resultado = 0
-
-document.getElementById("suma")
-  .addEventListener("click",   );
-
-document.getElementById("resta").addEventListener("click", resta);
-document.getElementById("div").addEventListener("click", division);
-document.getElementById("multi").addEventListener("click", multiplicacion);
-//switch (opera){
-//case "suma" :
-//        resultado = suma (varA,varB);
-//        console.log("El valor de la suma "+ resultado);
-//        break;
-//case "resta" :
-//        resultado = resta (varA,varB);
-//        console.log("El valor de la resta "+ resultado);
-//       break;
-//case "multiplicacion" :
-//        resultado = multiplicacion (varA,varB);
-//        console.log("El valor de la multiplicacion "+ resultado);
-//        break;
-//case "division" :
-//        resultado = division (varA,varB);
-//        console.log("El valor de la division "+ resultado);
-//        break;       
-//};
+//EVENTS
+document.getElementById("suma").addEventListener("click", ifSum);
+document.getElementById("resta").addEventListener("click", ifSub);
+document.getElementById("div").addEventListener("click", ifDiv);
+document.getElementById("multi").addEventListener("click", ifMult);
