@@ -44,7 +44,7 @@ function ifMult () {
   };
 };
 
-//EVENTS
+//EVENTS 
 document.getElementById("suma").addEventListener("click", ifSum);
 document.getElementById("resta").addEventListener("click", ifSub);
 document.getElementById("div").addEventListener("click", ifDiv);
