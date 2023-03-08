@@ -94,21 +94,21 @@ var SumTotal = () => document.getElementById("ttotal").innerText =
 
 //EVENT TYPE ROOM
 document.getElementById("room").addEventListener("change",T_room);
-
+document.getElementById("room").addEventListener("change",SumTotal);
 //EVENT SPA
 document.getElementById ("SPA").addEventListener("change",SPA_YN);
-
+document.getElementById("SPA").addEventListener("change",SumTotal);
 //EVENT OCUPATION
 document.getElementById ("ocupa").addEventListener("change",O_room);
-
+document.getElementById("ocupa").addEventListener("change",SumTotal);
 //EVENT NIGHT
 document.getElementById ("noches").addEventListener("change",N_room);
 document.getElementById ("noches").addEventListener("change",T_room);
 document.getElementById ("noches").addEventListener("change",SPA_YN);
 document.getElementById ("noches").addEventListener("change",O_room);
-
+document.getElementById("noches").addEventListener("change",SumTotal);
 //EVENT PARKING
 document.getElementById ("parking").addEventListener("change",N_park);
-
+document.getElementById("parking").addEventListener("change",SumTotal);
 //EVENTS TOTAL
-document.getElementById("total").addEventListener("click",SumTotal);
+//document.getElementById("total").addEventListener("click",SumTotal);
