@@ -53,8 +53,12 @@ function T_room () {
 //2_SPA OR NOT
 function SPA_YN () {
     var id_SPA = document.getElementById("SPA").value;
-    if (id_SPA == "on"){
+    console.log(id_SPA);
+    if (id_SPA === "on" && p_n_SPA ==0){
         p_n_SPA = 20;
+    }
+    else {
+        p_n_SPA = 0;
     };
     total_p_SPA= p_n_SPA * N_night;
     console.log(total_p_SPA);
