@@ -29,7 +29,7 @@ const carrito = [
     }
     ];
         
-//LISTAR PRODUCTOS CON FOR IN
+//LISTAR PRODUCTOS CON FOR IN 
     var a = 1;
     for ( i=0 ; i < carrito.length; i++){
         print(carrito[i]);
@@ -44,7 +44,7 @@ const carrito = [
      };
     };
 
-//ELIMINAR EL PRODUCTO CON id 54657
+//ELIMINAR EL PRODUCTO CON id 54657 
     let allId = [];
     //creo un nuevo array con solo los id
     for ( i=0 ; i < carrito.length; i++){
