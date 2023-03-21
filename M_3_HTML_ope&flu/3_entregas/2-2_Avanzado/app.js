@@ -22,7 +22,7 @@ switch(producto.type) {
         var iva = TotSi(pTot , 0.04);
         break;
     };
-    console.log( "Precio del iva" + " " + iva + "€" );
+    console.log( "Precio del iva" + " " + iva.toFixed(2) + "€" );
     
     const ptotal = pTot + iva ;
-    console.log( "Precio + IVA" + " " + pTot + "€" );
+    console.log( "Precio + IVA" + " " + ptotal.toFixed(2) + "€" );
