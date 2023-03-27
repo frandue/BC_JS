@@ -3,25 +3,6 @@
 // -length min 5 character
  var isValidFullName = fullname => fullname && (fullname.length >= 5); 
 
- //-Obtener el nombre que ha introducido el usuario
- //-Validar ese nombre
- //-Si es invalido => Aplicamos regla CSS para error sobre el imput
- //-Si es válido => No aplicamos la regla CSS (la eliminamos)
-
- function validateFullName (){
-    var fullNameField = document.getElementById("fullName");
-    var valid = isValidFullName(fullNameField.value);
-
-    if(valid){
-        fullNameField.classList.remove("error");
-    } else {
-        fullNameField.classList.add("error");
-    }
-
-    return valid;
- };
-
-
 // 2. Birthdate validation
 //-Year. Mayor de 1850. Menor o igual que el año actual
 //-Month entre 1 y 12
@@ -44,32 +25,73 @@ var isValidDate = date => {
     var parts = splitDateInParts(date); // [day, month, year]
     return ( isValidYear(parts[2]) && isValidMonth(parts[1]) && isValidDay(parts[0], parts[1], parts[2]));
 };
-var validateBirthdate = () => {
-    var birthdayField = document.getElementById("birthday");
-    var valid = isValidDate(birthdayField.value);
-    if (isValidDate(birthdayField.value)) {
-        birthdayField.classList.remove("error");
-    } else {
-         birthdayField.classList.add("error");
-    }
-    return valid;
-    };
 
+// 2b. Birthdate over 18.
+var isOver18 = date => {
+    var parts = splitDateInParts(date); // [day, month, year]
+    var nowDate = new Date();
+    var limitDate = nowDate.setFullYear(nowDate.getFullYear() - 18);
+    return limitDate >= new Date(parts[2], parts[1] - 1, parts[0]); // Months in 0 base
+    };
+    var showIsAdult = () => {
+    var birthdayField = document.getElementById("birthday");
+    document.getElementById("age").innerHTML = isOver18(birthdayField.value)
+    ? "SÍ"
+    : "NO";
+    };
+    
 // 3. DNI validation
+var DNI_LETTERS = "TRWAGMYFPDXBNJZSQVHLCKET";
+var isValidDNILetter = (dniLetter, dniNumber) =>
+    DNI_LETTERS[dniNumber % 23] === dniLetter.toUpperCase();
+var isValidDNINumber = number => number >= 0 && number <= 99999999;
+
+var isValidDNI = dni => {
+    if (dni.length !== 9) return false;
+    var dniNumber = dni.slice(0, 8);
+    var dniLetter = dni.slice(8, 9);
+return isValidDNINumber(dniNumber) && isValidDNILetter(dniLetter, dniNumber);
+};
+
 
 
 
 // 4 . Mobile validation
-
-
+var isValidMobile = mobile => {
+    return (
+        parseInt(mobile) &&
+        mobile.length === 9 &&
+        (mobile.startsWith(9) ||
+        mobile.startsWith(8) ||
+        mobile.startsWith(7) ||
+        mobile.startsWith(6))
+    );
+};
 
 // 5. General Algorithm
+var validateInput = (id, validationFunction) => {
+    var field = document.getElementById(id);
+    var valid = isValidMobile(field.value);
+
+    if (valid) {
+        field.classList.remove("error");
+    } else {
+        field.classList.add("error");
+    }
+    return valid;
+}
+
 
 function validateForm(event) {
     event.preventDefault();
 
-    //validateFullName()
-    validateBirthdate()
+    validateInput("fullname", isValidFullName);
+    validateInput("birthday", isValidDate);
+    validateInput("birthday", showIsAdult);
+    validateInput("dni", isValidDNI);
+    validateInput("mobile", isValidMobile);
+   //
+
     /**
      *  ValidateFullName
      *  ValidateBirthdate
@@ -79,4 +101,5 @@ function validateForm(event) {
 };
 
 //Events
-document.getElementById("register").addEventListener("submit", validateForm, true);
+//document.getElementById("register").addEventListener("submit", validateForm, true);
+document.getElementById("fullName").addEventListener("change", () => validateInput("fullName", isValidFullName));
