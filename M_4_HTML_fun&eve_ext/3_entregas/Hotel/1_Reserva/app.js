@@ -1,5 +1,4 @@
 // HOTEL
-
 //3_OCUPATION ROOM
 function getOcupRoom () {
     var id_ocup = document.getElementById("ocupa").value;
@@ -12,9 +11,7 @@ function getOcupRoom () {
     }
     else if (id_ocup == "Triple" ){
         return 1.25;
-    };
-};
-
+    };};
 //1_TYPE ROOM....
 function getRoomPricePerNight () {
     var isSpaChecked = document.getElementById("SPA").checked;
@@ -35,17 +32,11 @@ function getRoomPricePerNight () {
     };
     return pricePerNight*getOcupRoom();
 };
-
 function calculatePrice () {
 console.log(document.getElementById("noches").value);
     priceRoom = document.getElementById("noches").value * getRoomPricePerNight() ;
-
     priceParking = document.getElementById("parking").value * 10;
-
     totalPrice = priceRoom + priceParking;
-
     document.getElementById("ttotal").innerText = totalPrice;
-
 };
-
 document.getElementById("total").addEventListener("click",calculatePrice);
