@@ -15,10 +15,10 @@ function areNumVal (ope1,operacion) {
     return false;}
   return true;};
 
-//OPERATIONS & RESULT
+//OPERATIONS "+" "-" "/" "*" "=" "parcial"
 function ResultSum(){
   var ope1 = getNumA();
-  areNumVal (ope1,"sumar");
+  areNumVal (ope1,"sumar");  
   total(ope1, operation ,result);
   operation = 1;
   };
@@ -30,6 +30,7 @@ function ResultSub(){
   };
 function ResultDiv(){
   var ope1 = getNumA();
+  console.log(operation);
   areNumVal (ope1,"división");
   total(ope1, operation ,result);
   operation= 3;
@@ -40,26 +41,27 @@ function ResultMult(){
   total(ope1, operation ,result);
   operation = 4;
   };
-function equal() {
-if ( operation == 1) {result = result + ope1;}
+function equal(){
+  var ope1 = getNumA();
+if ( operation == 0) {result = ope1;}  
+else if ( operation == 1) {result = result + ope1;}
 else if ( operation == 2) {result = result - ope1;}
-else if ( operation == 3) {result = result / ope1;}
-else if ( operation == 4) {result = result * ope1;};
-  document.getElementById("result").innerText = result;
-};
+else if ( operation == 3 && ope1 ==0) {alert("No se puede divir entre cero");}
+else if ( operation == 3 && ope1 !=0) {result = result / ope1;}
+else if ( operation == 4) {result = result * ope1;}
+document.getElementById("result").innerText = "El valor final es " + result;
+  };
 function total(ope1, operation, resultope) {
 if (result == 0 && operation == 0 ) { result = ope1;}
 else if ( operation == 1) {result = result + ope1;}
 else if ( operation == 2) {result = result - ope1;}
-else if ( operation == 3) {result = result / ope1;}
+else if ( operation == 3 && ope1 ==0) {alert("No se puede divir entre cero");}
+else if ( operation == 3 && ope1 !=0) {result = result / ope1;}
 else if ( operation == 4) {result = result * ope1;};
-
-};
-
-
+  };
 //EVENTS
 document.getElementById("suma").addEventListener("click", ResultSum);
 document.getElementById("resta").addEventListener("click", ResultSub);
 document.getElementById("div").addEventListener("click", ResultDiv);
 document.getElementById("multi").addEventListener("click", ResultMult);
-document.getElementById("result").addEventListener("click", equal);
+document.getElementById("equal").addEventListener("click", equal);
