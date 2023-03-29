@@ -28,62 +28,13 @@ const carrito = [
         premium: false
     }
     ];
-        
-//LISTAR PRODUCTOS CON FOR IN 
+
+//LISTAR PRODUCTOS     
+function listarProductos(carrito) {
     var a = 1;
-    for ( i=0 ; i < carrito.length; i++){
-        print(carrito[i]);
-        a++
+    console.log("Listado de productos del carrito:");
+    carrito.forEach(producto => {
+        console.log(`-${a++}- ${producto.name} (ID ${producto.id}): ${producto.count} unidades a $${producto.price} cada una.`);
+    });
     };
-    //Funcion para imprimir todas las variables del producto
-    function print (productos2){
-        var producto2 = 0;
-        console.log("-_-_-_- Producto nº " + a + " -_-_-_-");
-     for (producto2 in productos2){
-        console.log(producto2 + ":" + productos2[producto2]);
-     };
-    };
-
-//ELIMINAR EL PRODUCTO CON id 54657 
-    let allId = [];
-    //creo un nuevo array con solo los id
-    for ( i=0 ; i < carrito.length; i++){
-    allId[i] = carrito[i].id;
-    };
-    //busco la posición del producto
-    posId = allId.indexOf(54657);
-    let carritoEli = [];
-    //producto eliminado
-    carritoEli = carrito.splice(posId,1);
-
-//PRECIO TOTAL CARRITO COMPRA
-    var PreTot = 0 ;
-    var PreTotDes = 0 ;
-    for ( i=0 ; i < carrito.length; i++){
-        PreTot = PreTot + carrito[i].price*carrito[i].count;
-        };
-    console.log("El precio total del carrito sin descuento es " + PreTot + "€");
-    if(PreTot>100){
-    PreTotDes=PreTot*0.95
-    console.log("El precio total del carrito con descuento del 5% es " + PreTotDes + "€");
-    }
-    
-
-
-//FILTRAR PRODUCTOS PRIMIUM
-    console.log("Los productos con id premium, son:")
-    for ( i=0 ; i < carrito.length; i++){
-        var n = 0;
-        if(carrito[i].premium == true){
-            console.log(carrito[i].id);
-            n++
-        };        
-    };
-
-    //Mensajes sobre pedidos premium
-    if(n == carrito.length){
-        console.log ("Pedido sin gastos de envio");
-    }
-    else{
-        console.log ("Pedido con gastos de envio");
-    };
+listarProductos(carrito);
