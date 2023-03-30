@@ -36,11 +36,11 @@ const carrito = [
         a++
     };
     //Funcion para imprimir todas las variables del producto
-    function print (productos2){
-        var producto2 = 0;
+    function print (productos2){    //A
+        var producto2 = 0;             //B
         console.log("-_-_-_- Producto nº " + a + " -_-_-_-");
-     for (producto2 in productos2){
-        console.log(producto2 + ":" + productos2[producto2]);
+     for (producto2 in productos2){     //B in A
+        console.log(producto2 + ":" + productos2[producto2]);   //B A B
      };
     };
 
