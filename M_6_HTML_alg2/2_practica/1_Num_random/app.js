@@ -78,11 +78,73 @@ console.log(arrayY.indexOf(5));// Pero solo te devuelve el valor de la primmera 
 var binarySearch = (arrayB,target) => {
   var min = 0;
   var max = arrayB.length - 1;
-  while () {
+  while (min <= max) {
     var mid = Math.floor((max - min) / 2) + min;
     if (arrayB[mid] === target) return mid;
     else if (arrayB[mid] < target) min = mid + 1;
     else max = mid - 1;
   }
+  return -1
 } 
- //1:32: 00, Mirar el ultimo ejemplo
+var sortedArray = [11, 15, 32, 34, 36, 37, 75, 79, 80, 89];
+console.log(binarySearch(sortedArray,34))
+
+//Algoritmos de ordenacion.
+
+var arrayB = [3, 5, 1, 8, 7, 2];
+
+//ordenacion por burbuja de menos a mayor Bubble sort
+console.log(arrayB);
+//EJP
+  // Orig: [3, 5, 1, 8, 7, 2];
+  // 1era: [3, 1, 5, 8, 7, 2];
+  // 2nda: [3, 1, 5, 7, 8, 2];
+  // 3era: [3, 1, 5, 7, 2, 8];  
+  // 4rta: [1, 3, 5, 7, 2, 8]; 
+  // 5nta: [1, 3, 5, 2, 7, 8];
+  // 6nta: [1, 3, 2, 5, 7, 8]; 
+  // 7nta: [1, 2, 3, 5, 7, 8];
+
+  var swap = (array,a ,b ) => {
+    var temp = array [a];
+    array[a] = array[b]
+    array[b] = temp; 
+  }
+  var bubbleSort = array => {
+    var size = array.length;
+    for (var index = 1 ; index < size; index ++) {
+      //console.log("Iteracion: ", index);    // Pare ver las iteraciones
+      for (var left = 0; left < size - index; left++){
+        var right = left + 1;
+        if (array[left] > array[right]){
+          swap(array, left, right);
+        //  console.log("Array: ", array);    // Pare ver las iteraciones
+        }
+      }
+    }
+    return array
+  }
+  console.log(bubbleSort(arrayB));
+
+  //Algoritmo de ordenacion: Selection sort
+
+  var arraySS = [3, 5, 1, 8, 7, 2];
+
+  var selectionSort = array => {
+    var size = array.length;
+    var minIndex;
+
+    for (var sIndex = 0; sIndex < size; sIndex ++) {
+      //s  => seleccion
+      minIndex = sIndex
+
+      //bucle interno
+      for(var index = sIndex + 1 ; index < size ; index ++) {
+        if (array[index] < array [minIndex]) minIndex = index;
+      }
+      swap(array, minIndex, sIndex);
+    }
+    return array;
+  }
+
+  console.log(selectionSort(arraySS));
