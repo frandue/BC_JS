@@ -148,3 +148,28 @@ console.log(arrayB);
   }
 
   console.log(selectionSort(arraySS));
+
+
+  //Algoritmo de ordenacion: Insercion sort
+
+  var myArray = [3, 5, 1, 8, 7, 2];
+
+  var insetionSort = array => {
+    var size = array.length;
+    var sortedListLastIndex = 0;
+  
+  for (var item = 1; item < size; item ++) {
+    var current = array[item];
+    var currentIndex = item;
+    var swapIndex = sortedListLastIndex;
+
+    while(current < array[swapIndex] && swapIndex >- 0) {
+      swap(array, currentIndex --, swapIndex --);
+      console.log("Mutaciones internas", myArray);
+    }
+    console.log("Final de cada iteración", myArray);
+    sortedListLastIndex ++;
+  }
+return array ;
+  }
+console.log(insetionSort(myArray));
