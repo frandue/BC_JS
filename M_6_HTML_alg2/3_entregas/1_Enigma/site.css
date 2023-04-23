@@ -1,0 +1,17 @@
+div {
+    margin-bottom: 10px;
+  }
+  
+  textarea {
+    width: 60%;
+    height: 100px;
+  }
+  
+  #message {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-right: 20px;
+    
+  }
