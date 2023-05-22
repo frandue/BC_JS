@@ -1,0 +1,18 @@
+{
+  "name": "import-vs-es6-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.7.0",
+    "parcel-bundler": "^1.12.5"
+  },
+  "devDependencies": {},
+  "description": ""
+}
