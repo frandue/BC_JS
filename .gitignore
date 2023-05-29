@@ -1,8 +1,6 @@
-/1_teoria
-/2_practica
 **/4_videos
 M_xx_
 node_modules
-/2_practica/node_modules
-/3_entregas/1_ES6/node_modules
-/3_entregas/2_CommonJS/node_modules
+**/2_practica/node_modules
+**/3_entregas/1_ES6/node_modules
+**/3_entregas/2_CommonJS/node_modules
