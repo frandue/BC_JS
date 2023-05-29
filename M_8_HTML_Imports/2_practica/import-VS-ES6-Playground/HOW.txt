@@ -12,6 +12,7 @@ npm install parcel-bundler
 3_Ejecuta el siguiente comando en la terminal:
 
 npm start
+
 Esto iniciará el servidor de desarrollo de Parcel y compilará tu código JavaScript.
 Luego podrás acceder a tu página en http://localhost:1234 y verás los resultados 
 de las funciones hello() en el navegador.
