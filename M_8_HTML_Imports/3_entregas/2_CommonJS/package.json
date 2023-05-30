@@ -1,7 +1,6 @@
 {
   "name": "2_commonjs",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
@@ -12,5 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "parcel-bundler": "^1.12.5"
+  },
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "parcel": "^2.8.3"
   }
 }
