@@ -1,0 +1,16 @@
+{
+  "name": "5_pract_libreriaaxios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.4.0",
+    "buffer": "^5.7.1"
+  }
+}

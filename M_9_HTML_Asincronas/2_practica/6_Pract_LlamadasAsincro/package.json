@@ -1,0 +1,18 @@
+{
+  "name": "6_pract_llamadasasincro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "axios": "^1.4.0",
+    "parcel": "^2.8.3"
+  }
+}
