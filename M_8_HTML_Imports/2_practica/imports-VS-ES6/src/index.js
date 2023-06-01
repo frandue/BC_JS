@@ -1,5 +1,5 @@
-import * as DataBusiness from "./src/data-business"
-import * as UserBusiness from "./src/user-business"
+import * as DataBusiness from "./data-business"
+import * as UserBusiness from "./user-business"
 
 const users = DataBusiness.getUsers();
 

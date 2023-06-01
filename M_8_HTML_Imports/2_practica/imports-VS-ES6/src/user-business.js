@@ -1,4 +1,4 @@
-import * as AvatarBusiness from "./src/avatar-business";
+import * as AvatarBusiness from "./avatar-business";
 
 function etFullName (user) {
     return user.first_name + " " + user.last_name ;     // Devolvemos el nodo

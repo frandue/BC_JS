@@ -2,6 +2,7 @@ import * as UserBusiness from "./user-business";
 import * as DataBusiness from "./data-business";
 
 DataBusiness.getUsers().then(data => {
+  document.getElementById("root").innerText = "";
   const users = data;
   
   const nodes = [];
