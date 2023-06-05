@@ -1,9 +1,10 @@
-import { createCharacterRow, showCharacter } from "./utils.js";
+import { createCharacterRow, showCharacter } from "./utils.js";    
 import axios from "axios";
 function getUsers() {
     return axios
-      .get("https://rickandmortyapi.com/api/character")
+      .get("https://rickandmortyapi.com/api/character?page=1")
       .then((response) => {
+        document.getElementById("root").innerText = "";
         const characters = response.data.results;
         const rootElement = document.getElementById("root");
   
@@ -13,7 +14,10 @@ function getUsers() {
   
           characterRow.addEventListener("click", () => {
             showCharacter(character);
+        
           });
+
+          
         });
       })
       .catch((error) => {

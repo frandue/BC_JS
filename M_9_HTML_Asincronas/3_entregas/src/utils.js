@@ -1,4 +1,4 @@
-
+    
 const createCharacterRow = (character) => {
     const element = document.createElement("div");
   
@@ -46,6 +46,17 @@ const createCharacterRow = (character) => {
     characterDetail.appendChild(createParagraph("Name: " + character.name));
     characterDetail.appendChild(createParagraph("Status: " + character.status));
     characterDetail.appendChild(createParagraph("Species: " + character.species));
+    // Añado el genero(Tipo string)
+    characterDetail.appendChild(createParagraph("Gender: " + character.gender));
+    // Para obtener los números de los episodios(Tipo array)
+    const episodeNumbers = character.episode.map((episode) => {
+        const episodeParts = episode.split("/");
+        return episodeParts[episodeParts.length - 1];
+      });
+    if (episodeNumbers.length > 10) {
+        characterDetail.appendChild(createParagraph("The ten first episode: " + episodeNumbers.slice(0, 10).join(", ")))
+    } else {characterDetail.appendChild(createParagraph("All the episode Numbers: " + episodeNumbers.join(", ")));};
+    
   };
   
   const createParagraph = (text) => {
