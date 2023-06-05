@@ -4,13 +4,7 @@ function getUsers() {
     return axios
       .get("https://api.github.com/orgs/lemoncode/members")
       .then(response => {
-        const myPromise = new Promise(resolve => {
-          setTimeout(function() {
-            resolve(response.data);
-          }, 4000);
+        return response.data;
         });
-
-      return myPromise;
-    });
 }
   export { getUsers };

@@ -3,10 +3,10 @@ const myPromise = new Promise((resolve, reject) => {
         //el resolve son los datos a lo que vamos cuando se resuelve la promesa
         //reject cuando se produce un error o queremos devolver un error 
     setTimeout(function () {
-        //resolve -> then
+        //resolve -> the  n
         //reject -> catch
 
-        reject("Hola, esto es la respuesta correcta de la promesa ;)");
+        reject("Hola, esto es la respuesta incorrecta de la promesa ;)");
     },3000);
     // Me devuleve el resultado a los 3 segundos
 });

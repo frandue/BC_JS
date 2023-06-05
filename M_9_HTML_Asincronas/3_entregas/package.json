@@ -1,10 +1,11 @@
 {
-  "name": "7_pract_llamadasasincro_axios",
+  "name": "3_entregas",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html --open"
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
   },
   "keywords": [],
   "author": "",
