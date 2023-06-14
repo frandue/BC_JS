@@ -269,7 +269,7 @@ EJP de Reduce_2:
     const getTitlesString = books => books.reduce((titles, book) => titles + " " + book.title, "");
     console.log(getTitlesString(bookCollection));
 
-EJP de Convinacion:
+EJP de Combinacion:
     const extracInreadBoolsSorted = books =>
         books
             .filter(book => !book.read)     // Selecciono los libros no leidos
@@ -277,7 +277,7 @@ EJP de Convinacion:
             .sort((a,b) => b.pages - a.pages);      //Ordeno de las paginas de mayor a menos
         console.log(extracInreadBoolsSorted(bookCollection));
 
-EJP de Convinacion 1:
+EJP de Combinacion 1:
 
 
 
