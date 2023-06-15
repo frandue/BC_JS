@@ -3,7 +3,7 @@ const words = ["Aguacate", "libro", "arbol", "anchoa", "lechuga", "Aceituna" ];
 
 // Con filter, palabras que empieza con "A" o "a"
 function wordsStartingWithA(array) {
-    const startingWithA = array.filter(word => word.toLowerCase().startsWith('a'));
+    const startingWithA = array.filter(word => word.toLowerCase().startsWith("a"));
     return startingWithA;
 }
 
