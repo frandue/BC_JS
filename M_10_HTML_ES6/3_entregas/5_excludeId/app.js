@@ -8,10 +8,10 @@ const user = {
 
 // Con destructuring y rest
 function excludeId(aaaa) {
-    const { id, ...rest } = user; // Busca la propiedad llamada Id si la hubiera
+    const { id, ...rest } = aaaa; // Busca la propiedad llamada Id si la hubiera
     return { ...rest }; // todas la propiedades menos Id
 };
 console.log("Original:" + " " + (user));
 console.log("Menos el Id:");
-console.log(excludeId(user));
+console.log(excludeId(aaaa));
 

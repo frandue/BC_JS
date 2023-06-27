@@ -1,9 +1,9 @@
-// contact
+// concat
 const words = ["Aguacate", "libro", "arbol", "anchoa", "lechuga", "Aceituna" ];
 
-// Con map, uno todas las palabras con "|"
+// Con join, uno todas las palabras con "|"
 function contact(array) {
-    const joinWith = array.map(word =>  word).join("|");
+    const joinWith = words.join("|");
     return joinWith;
 }
 

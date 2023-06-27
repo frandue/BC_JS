@@ -1,15 +1,20 @@
 // shout
-const string1 = "cierra";
-const string2 = "la ";
-const string3 = "puerta";
+const palabras =[ "cierra", "la", "puerta" ];
+const palabras2 = [ "por", "favor" ];
 
 // Con map y join. Para todo mayusculas o todo minuscula
 function shout (...strings) {
-    return strings.map(word => word.toUpperCase()).join(" ");
+    console.log("numero de elementos que recibe la función:");
+    console.log(strings.length);
+    return (strings.map(word => {
+        console.log("item de esta iteracion:");
+        console.log(word);
+        return word.toUpperCase();
+    }).join(" "))+ "!";
 }
 
 console.log("Las palabras sin gritar:");
-console.log(shout(string1,string2,string3).toLowerCase());
+console.log(palabras, palabras2);
 
 console.log("Las palabras gritadas:");
-console.log(shout(string1,string2,string3)+ "!");
+console.log(shout(...palabras, ...palabras2));

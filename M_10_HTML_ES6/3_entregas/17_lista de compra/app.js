@@ -10,35 +10,48 @@ const shoppingCart = [
 ];
 
 console.log("Lista sin IVA ");
-console.log( JSON.stringify(shoppingCart));
+console.log(shoppingCart);
 
 //A. Obtén una nueva lista donde aparezca el IVA (21%) de cada producto.
-function shoppingCarIVA(list) {
+function shoppingCartIVA(list) {
   return list.map(item => {
-    const { product, price, units } = item;
-    const IVA = (price * units * 0.21).toFixed(2);
-    return { product, price, units, IVA };
+    return {
+      ...item,
+      iva: Math.round(item.price*0.21 * 100) / 100,
+    }
   });
 }
 console.log("Lista con IVA ");
-console.log( JSON.stringify(shoppingCarIVA(shoppingCart)));
+console.log( shoppingCartIVA(shoppingCart));
 
 //B. Ordena la lista de más a menos unidades.
 function moreToLess(list) {
-  return list.sort((a, b) => b.units - a.units);
+  return list.sort((a, b) => {
+    if (a.units > b.units) return -1;
+    if (a.units < b.units) return 1;
+    return 0;
+  });
 }
 console.log("Lista de mas a menos unidades ");
-console.log(JSON.stringify(moreToLess(shoppingCart)));
+console.log(moreToLess(shoppingCart));
 
 //C. Obtén el subtotal gastado en droguería.
 function subTotalDrugstore(list) {
   return list
   .filter(item => item.category === "Droguería")
-  .map(item => {
-    const { product, price, units } = item;
-    const SUB = (price * units).toFixed(2);
-    return { product, price, units, SUB };
-  });
+  .reduce((accumulator, currentValue) => accumulator + currentValue.units * currentValue.price,
+  0
+  );
 }
 console.log("subtotal gastado en droguería ");
-console.log(JSON.stringify(subTotalDrugstore(shoppingCart)));
+console.log(subTotalDrugstore(shoppingCart));
+
+
+//D.  Obtén la lista por consola en formato "Producto -> Precio Total €" y ordenada por categoría.
+function listSort(list) {
+  list.sort((a, b) => a.category.localeCompare(b.category));
+  return list.map(item => ` ${item.product} (${item.category})-> ${item.price * item.units} €`);
+}
+console.log("Producto(categoría)-> Precio Total €");
+console.log(listSort(shoppingCart));
+
