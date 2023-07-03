@@ -35,12 +35,13 @@ const cesta = [
 ];
 
 class CarritoDeLaCompra {
-  constructor() {
+  constructor() {     //Propiedades de la clase
     this._cesta = [];
     this._subtotal = 0;
+    this._total = 0;
   }
 
-  calculaSubtotal() {
+calculaSubtotal() {
     // // // for (let i = 0; i < This._cesta.length; i ++) {
     // // //   this._subtotal =
     // // //     this._subtotal + this._cesta[i].precio * this._cesta[i].cantidad;
@@ -49,24 +50,64 @@ class CarritoDeLaCompra {
 
      this._subtotal = this._cesta.reduce((
       acumulado, lineaTicket) => acumulado + (lineaTicket.cantidad * lineaTicket.precio),
-      0); //Valor inicial
+      0);     //Valor inicial
 
+}
+
+calcularFactorIVA (tipoIVA) {
+  switch (tipoIVA) {
+    case "general":
+      return 1.21;
+    case "reducudo":
+      return 1.1;
+    case "superreducido":
+      return 1.4;   //1,04
   }
+  return 1;
+}
 
-  get subtotal() {
-    return this._subtotal;
-  }
+calcularTotal() {
+  this._total = cesta.reduce(
+    (acumulado, { cantidad, precio, tipoIVA}) =>
+      acumulado + cantidad * precio * this.calcularFactorIVA(tipoIVA),
+      0
+    );
+  this._total = Number(this._total.toFixed(2));     //Añado para redondear el valor  2 decimales
+}
 
-  set cesta(cestaExterna) {
-    this._cesta = cestaExterna;
-    this.calculaSubtotal();
+get total() {
+  return this._total
+}
+
+get subtotal() {
+  return this._subtotal;
+}
+
+set cesta(cestaExterna) {
+  this._cesta = cestaExterna;
+  this.calculaSubtotal();
+  this.calcularTotal(); 
+}
+}
+
+class CarritoExtranjero extends CarritoDeLaCompra {
+  calcularTotal() {
+    this._total = cesta.reduce(
+      (acumulador, {cantidad, precio }) => acumulador + cantidad*precio,
+      0
+    ); 
   }
 }
 
+console.log("**Carrito de la compra normal***");
 const carrito = new CarritoDeLaCompra();
-
-carrito.cesta = cesta;
-
+carrito.cesta = cesta;    //1
 console.log("Subtotal", carrito.subtotal);
+console.log("Total", carrito.total);
 
-**************         1,50,00
+console.log("**Carrito de la compra Extrangera***");
+const carritoExtrangero = new CarritoExtranjero();
+carritoExtrangero.cesta = cesta;    //1
+console.log("Subtotal", carritoExtrangero.subtotal);
+console.log("Total", carritoExtrangero.total);
+
