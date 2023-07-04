@@ -49,11 +49,8 @@ class ClaseParticular {
    }
         
   calcularTotal() {
-   this._total = this._reservas.reduce((acumulado, lineaReserva) => {
-   const { tipoHabitacion, noches } = lineaReserva;
-   return acumulado + noches * this.calcularFactorRoom(tipoHabitacion) * 1.21;
-   }, 0); 
-   this._total = Number(this._total.toFixed(2));
+    this._total = this._subtotal * 1.21;
+    this._total = Number(this._total.toFixed(2));
   }
         
   get total() {
@@ -80,7 +77,7 @@ class ClaseTour extends ClaseParticular{
      return ( pax > 0 ? --pax * 40 : 0 )
    }
  
-   calculaSubtotal() {  //Metodo
+   calculaSubtotal() {
     this._subtotal = this._reservas.reduce((acumulado, lineaReserva) => {
     const { tipoHabitacion, noches, pax } = lineaReserva;
     if (pax <2) {
@@ -93,13 +90,10 @@ class ClaseTour extends ClaseParticular{
     }
          
    calcularTotal() {
-    this._total = this._reservas.reduce((acumulado, lineaReserva) => {
-    const { tipoHabitacion, noches } = lineaReserva;
-    return acumulado + noches * this.calcularFactorRoom(tipoHabitacion) * 1.21 * 0.85;
-    }, 0); 
+    this._total = this._subtotal * 1.21 * 0.85;
     this._total = Number(this._total.toFixed(2));
    }
-         
+    
    get total() {
     return this._total;
    }

@@ -48,12 +48,8 @@ class CarritoHotel {
    }
         
   calcularTotal() {
-   this._total = this._reservas.reduce((acumulado, lineaReserva) => {
-   const { tipoHabitacion, noches } = lineaReserva;
-   return acumulado + noches * this.calcularFactorRoom(tipoHabitacion) * 1.21;
-   }, 0);
-        
-  this._total = Number(this._total.toFixed(2));
+   this._total = this._subtotal * 1.21;
+   this._total = Number(this._total.toFixed(2));
   }
         
   get total() {
