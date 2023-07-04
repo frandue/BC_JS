@@ -71,7 +71,7 @@ class CarritoHotel {
   }
 }
         
-console.log("**Booking del hotel***");
+console.log("**Booking Particular del hotel***");
 const booking = new CarritoHotel();
 booking.reservas = reservas;
 console.log("Subtotal", booking.subtotal);
