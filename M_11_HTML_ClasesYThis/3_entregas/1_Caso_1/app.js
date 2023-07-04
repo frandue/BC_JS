@@ -32,13 +32,17 @@ class CarritoHotel {
     };
   }
 
+  suplementoPersonaAdicional(pax) {
+    return ( pax > 0 ? --pax * 40 : 0 )
+  }
+
   calculaSubtotal() {
    this._subtotal = this._reservas.reduce((acumulado, lineaReserva) => {
    const { tipoHabitacion, noches, pax } = lineaReserva;
    if (pax <2) {
    return acumulado + noches * this.calcularFactorRoom(tipoHabitacion);}
    else {
-   return acumulado + noches * (this.calcularFactorRoom(tipoHabitacion) + (pax - 1) * 40);
+   return acumulado + noches * (this.calcularFactorRoom(tipoHabitacion) + this.suplementoPersonaAdicional(pax));
    }
 }, 0);
    }
@@ -67,8 +71,8 @@ class CarritoHotel {
   }
 }
         
-console.log("**Carrito de hotel***");
-const carrito = new CarritoHotel();
-carrito.reservas = reservas;
-console.log("Subtotal", carrito.subtotal);
-console.log("Total", carrito.total);
+console.log("**Booking del hotel***");
+const booking = new CarritoHotel();
+booking.reservas = reservas;
+console.log("Subtotal", booking.subtotal);
+console.log("Total", booking.total);
