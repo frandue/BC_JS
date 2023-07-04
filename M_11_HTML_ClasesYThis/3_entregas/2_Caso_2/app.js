@@ -71,8 +71,8 @@ class CarritoHotel {
   }
 }
         
-console.log("**Carrito de hotel***");
-const carrito = new CarritoHotel();
-carrito.reservas = reservas;
-console.log("Subtotal", carrito.subtotal);
-console.log("Total", carrito.total);
+console.log("**Booking del hotel***");
+const booking = new CarritoHotel();
+booking.reservas = reservas;
+console.log("Subtotal", booking.subtotal);
+console.log("Total", booking.total);
