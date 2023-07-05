@@ -2,20 +2,20 @@ const reservas = [
   {
     tipoHabitacion: "standard",
     desayuno: true,
-    pax: 2,
-    noches: 2
+    pax: 1,
+    noches: 3
   },
   {
     tipoHabitacion: "standard",
     desayuno: true,
-    pax: 2,
-    noches: 2
+    pax: 1,
+    noches: 4
   },
   {
     tipoHabitacion: "suite",
     desayuno: true,
     pax: 2,
-    noches: 2
+    noches: 1
   }
 ];
 
