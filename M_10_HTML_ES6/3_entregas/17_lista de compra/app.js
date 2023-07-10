@@ -9,8 +9,8 @@ const shoppingCart = [
   { category: "Carne y Pescado", product: "Secreto ibérico", price: 5.75, units: 2 },
 ];
 
-console.log("Lista sin IVA ");
-console.log(shoppingCart);
+// console.log("Lista sin IVA ");
+// console.log(shoppingCart);
 
 //A. Obtén una nueva lista donde aparezca el IVA (21%) de cada producto.
 function shoppingCartIVA(list) {
@@ -21,8 +21,8 @@ function shoppingCartIVA(list) {
     }
   });
 }
-console.log("Lista con IVA ");
-console.log( shoppingCartIVA(shoppingCart));
+// console.log("Lista con IVA ");
+// console.log( shoppingCartIVA(shoppingCart));
 
 //B. Ordena la lista de más a menos unidades.
 function moreToLess(list) {
@@ -32,8 +32,8 @@ function moreToLess(list) {
     return 0;
   });
 }
-console.log("Lista de mas a menos unidades ");
-console.log(moreToLess(shoppingCart));
+// console.log("Lista de mas a menos unidades ");
+// console.log(moreToLess(shoppingCart));
 
 //C. Obtén el subtotal gastado en droguería.
 function subTotalDrugstore(list) {
@@ -43,15 +43,16 @@ function subTotalDrugstore(list) {
   0
   );
 }
-console.log("subtotal gastado en droguería ");
-console.log(subTotalDrugstore(shoppingCart));
+// console.log("subtotal gastado en droguería ");
+// console.log(subTotalDrugstore(shoppingCart));
 
 
 //D.  Obtén la lista por consola en formato "Producto -> Precio Total €" y ordenada por categoría.
 function listSort(list) {
   list.sort((a, b) => a.category.localeCompare(b.category));
-  return list.map(item => ` ${item.product} (${item.category})-> ${item.price * item.units} €`);
+  list.forEach(item =>console.log( `${item.product} (${item.category})-> ${item.price * item.units} €`));
 }
 console.log("Producto(categoría)-> Precio Total €");
-console.log(listSort(shoppingCart));
+listSort(shoppingCart);
 
+// console.log(listSort(shoppingCart));

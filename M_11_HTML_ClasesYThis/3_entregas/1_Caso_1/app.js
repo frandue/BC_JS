@@ -17,8 +17,8 @@ const reservas = [
 ];
 
 class CarritoHotel {
-  constructor() {     //Propiedades de la clase
-    this._reservas = [];
+  constructor(reservas) {     //Propiedades de la clase
+    this._reservas = reservas;
     this._subtotal = 0;
     this._total = 0;
   }
@@ -33,7 +33,7 @@ class CarritoHotel {
   }
 
   suplementoPersonaAdicional(pax) {
-    return ( pax > 0 ? --pax * 40 : 0 )
+    return ( pax > 1 ? --pax * 40 : 0 )
   }
 
   calculaSubtotal() {
@@ -60,15 +60,14 @@ class CarritoHotel {
    return this._subtotal;
   }
         
-  set reservas(reservasExterna) {
-  this._reservas = reservasExterna;
-  this.calculaSubtotal();
-  this.calcularTotal();
+  set reservas(reservas) {
+  	this._reservas = reservas;
   }
 }
         
 console.log("**Booking Particular del hotel***");
-const booking = new CarritoHotel();
-booking.reservas = reservas;
+const booking = new CarritoHotel(reservas);
+booking.calculaSubtotal();
+booking.calcularTotal();
 console.log("Subtotal", booking.subtotal);
 console.log("Total", booking.total);

@@ -3,7 +3,6 @@ const numbers1 = [2, 3, 17];
 
 // Con map, mutlplico todo el array "numbers1" por "numbers2"
 function calcMult(...nums) {
-    console.log(nums.length);
     return nums.reduce((acc, num) => acc * num, 1);
   }
 

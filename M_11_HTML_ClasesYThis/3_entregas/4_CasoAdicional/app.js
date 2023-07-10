@@ -1,13 +1,13 @@
 const reservas = [
   {
     tipoHabitacion: "standard",
-    desayuno: true,
+    desayuno: false,
     pax: 1,
     noches: 3
   },
   {
     tipoHabitacion: "standard",
-    desayuno: true,
+    desayuno: false,
     pax: 1,
     noches: 4
   },
@@ -20,19 +20,19 @@ const reservas = [
 ];
 
 class ClaseBase {
-  constructor(preciosHabitaciones) {
-    this.preciosHabitaciones = preciosHabitaciones;
-    this._reservas = [];
+  constructor(reservas) {
+    this._preciosHabitaciones = [100, 150];
+    this._reservas = reservas;
     this._subtotal = 0;
     this._total = 0;
   }
 
   calcularFactorRoom(tipoRoom) {
-    return 1 ;
+    return 10;    //Prueba para la clase base
   }
 
   suplementoPersonaAdicional(pax) {
-    return pax > 0 ? --pax * 40 : 0;
+    return pax > 1 ? --pax * 40 : 0;
   }
 
   suplementoDesayunoPesona(desayuno) {
@@ -43,20 +43,16 @@ class ClaseBase {
     this._subtotal = this._reservas.reduce((acumulado, lineaReserva) => {
       const { tipoHabitacion, noches, pax, desayuno } = lineaReserva;
       if (pax < 2) {
-        return acumulado + noches * this.calcularFactorRoom(tipoHabitacion) + pax * noches * this.suplementoDesayunoPesona(desayuno) ;
+        return acumulado + noches * this.calcularFactorRoom(tipoHabitacion) + pax * noches * this.suplementoDesayunoPesona(desayuno);
       } else {
-        return (
-          acumulado +
-          noches *
-            (this.calcularFactorRoom(tipoHabitacion) + this.suplementoPersonaAdicional(pax))
-        );
+        return (acumulado + noches * this.calcularFactorRoom(tipoHabitacion) + pax * noches * this.suplementoDesayunoPesona(desayuno)+ this.suplementoPersonaAdicional(pax));
       }
     }, 0);
     this._subtotal = Number(this._subtotal.toFixed(2));
   }
 
   calcularDescuento() {
-    return 1 ; // Implementa el cálculo del descuento según la lógica necesaria
+    return 1.21; // Implementa el cálculo del descuento según la lógica necesaria
   }
 
   calcularTotal() {
@@ -74,61 +70,47 @@ class ClaseBase {
 
   set reservas(reservasExterna) {
     this._reservas = reservasExterna;
-    this.calculaSubtotal();
-    this.calcularTotal();
   }
 
 }
 
 class ClaseParticular extends ClaseBase {
-  constructor() {     
-    super();
-  }
 
   calcularFactorRoom(tipoRoom) {
     switch (tipoRoom) {
       case "standard":
-        return 100;
+        return this._preciosHabitaciones[0];  // Precio de 100
       case "suite":
-        return 150;
+        return this._preciosHabitaciones[1];  // Precio de 150
     }
   }
-
-  calcularDescuento() {
-    return 1.21;         // Implementa el cálculo del descuento específico para ClaseParticular
-  }
-
+// El resto no se ha modificado
 }
 
 class ClaseTour extends ClaseBase {
-  constructor() {
-    super();
+  constructor(reservas) {
+    super(reservas);
   }
-
   calcularFactorRoom(tipoRoom) {
-    return 100;       // Precio fijo de 100 para todas las habitaciones en ClaseTour
+    return this._preciosHabitaciones[0];
   }
 
   calcularDescuento() {
-    return 1.21 * 0.85;       // Implementa el cálculo del descuento específico para ClaseTour
+    return (1.21 * 0.85);       // Implementa el cálculo del descuento específico para ClaseTour
   }
 
 }
 
-console.log("**Booking Base del hotel***");
-const booking1 = new ClaseBase();
-booking1.reservas = reservas;
+console.log("**Booking Particular del hotel(Desayuno)***");
+const booking1 = new ClaseParticular(reservas);
+booking1.calculaSubtotal();
+booking1.calcularTotal();
 console.log("Subtotal", booking1.subtotal);
 console.log("Total", booking1.total);
 
-console.log("**Booking Particular del hotel***");
-const booking2 = new ClaseParticular();
-booking2.reservas = reservas;
+console.log("**Booking Tour del hotel(Desayuno)***");
+const booking2 = new ClaseTour(reservas);
+booking2.calculaSubtotal();
+booking2.calcularTotal();
 console.log("Subtotal", booking2.subtotal);
 console.log("Total", booking2.total);
-
-console.log("**Booking Tour del hotel***");
-const booking3 = new ClaseTour();
-booking3.reservas = reservas;
-console.log("Subtotal", booking3.subtotal);
-console.log("Total", booking3.total);
