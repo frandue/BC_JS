@@ -1,24 +1,42 @@
+import { onSetValues } from '../../common/helpers';
+
 //Utilizo la API en el fichero principal
-import { getMovementsList } from "./movements.api";
+import { getAccountMovements, getMovementsList } from "./movements.api";
 
 //Import el metodo account-helper que me añade la fila
 import { addMovementRows } from "./movements.helpers";
 
-import { mapMovementListFromApiToViewModel } from './movements.mapper';
+import { mapAccountFromApiToViewModel, mapMovementListFromApiToViewModel } from './movements.mapper';
+
+import { history } from '../../core/router';
+
+import { getAccount } from '../account/account.api';
+
+let account = {
+  id: '',
+  alias: '',
+  balance: '',
+  iban: '',
+};
 
 
-//Como es un metodo asincrono tiene su promesa
-getMovementsList().then(movementList => {
-    const viewModelMovementList = mapMovementListFromApiToViewModel(movementList);
-    //console.log({accountList});   //ASi me sale el nombre de lo que estoy pintando
-//Añado la fila de la lista que me obtiene del servidor
-    addMovementRows(viewModelMovementList);
-    
-//Usamos el elemento onUpdateField
-    viewModelMovementList.forEach(movement => {
-        onUpdateField(`select-${movement.id}` , event => {
-            const route = event.target.value;
-            history.push(route);
-        });
-    });
-});
+const params = history.getParams();
+const hasId = Boolean(params.id); // !! = Boolean
+
+if (hasId) {
+  getAccount(params.id).then(apiAccount => {
+    account = mapAccountFromApiToViewModel(apiAccount);
+    onSetValues(account);
+  });
+
+  getAccountMovements(params.id).then(movements => {
+    const mappedMovements = mapMovementListFromApiToViewModel(movements);
+    addMovementRows(mappedMovements);
+  });
+} else {
+  getMovementsList().then(movements => {
+    const mappedMovements = mapMovementListFromApiToViewModel(movements);
+    addMovementRows(mappedMovements);
+  });
+}
+

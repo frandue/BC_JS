@@ -10,5 +10,12 @@ const mapMovementFromApiToViewModel = movements => {
             balance: `${movements.balance} €`,
             transaction: new Date(movements.transaction).toLocaleDateString(),
             realTransaction: new Date(movements.realTransaction).toLocaleDateString(),
+            Id: movements.accountId,
     };
 };
+
+export const mapAccountFromApiToViewModel = account => ({
+    ...account,
+    alias: account.name,
+    balance: `${account.balance} €`,
+});

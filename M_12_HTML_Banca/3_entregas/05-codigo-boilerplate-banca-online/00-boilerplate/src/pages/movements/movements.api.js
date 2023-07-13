@@ -1,8 +1,14 @@
 import Axios from "axios";
-//En json de este URL me traigo todos los movimientos
-const url = `${process.env.BASE_API_URL}/movements`;     //Nos traemos todos los dato
 
-export const getMovementsList = () =>Axios.get(url).then(response => {
-    //Axios con get para obtener datos, como es una promesa con el then obtengo los parametros del servidor
-        return response.data;
-    });
+//URL del endpoint de movimientos
+const url = `${process.env.BASE_API_URL}/movements`; 
+
+export const getAccountMovements = (accountId) => {
+  const new_url = `${url}?accountId=${accountId}`; // Esta nueva URL me traerá únicamente los movimientos de la cuenta con id 'accountId'
+  return Axios.get(new_url).then(response => response.data);
+} 
+
+export const getMovementsList = () =>{
+  //Axios con get para obtener datos, como es una promesa con el then obtengo los parametros del servidor
+  return Axios.get(url).then(response => response.data);
+}

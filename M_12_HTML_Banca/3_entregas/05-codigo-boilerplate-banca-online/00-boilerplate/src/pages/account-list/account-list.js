@@ -18,7 +18,7 @@ import { history } from "../../core/router";
 
 
 
-//Como es un metodo asincrono tiene su promesa
+//Como es un metodo asincrono tiene su promesa      
 getAccountList().then(accountList => {
     const viewModelAccountList = mapAccountListFromApiToViewModel(accountList);
     //console.log({accountList});   //ASi me sale el nombre de lo que estoy pintando
@@ -29,6 +29,7 @@ getAccountList().then(accountList => {
     viewModelAccountList.forEach(account => {
         onUpdateField(`select-${account.id}` , event => {
             const route = event.target.value;
+            // console.log(route);
             history.push(route);
         });
     });
