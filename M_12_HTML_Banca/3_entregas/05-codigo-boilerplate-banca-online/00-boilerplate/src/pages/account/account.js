@@ -7,7 +7,7 @@ import { formValidation } from './account.validations';
 
 import { history } from '../../core/router';
 
-import { getAccount,updateAccount, insertAccount  } from './account.api';
+import { getAccount, updateAccount, insertAccount  } from './account.api';
 
 import { mapAccountFromApiToViewModel, mapAccountFromViewModelToApi } from './account.mapper';
 

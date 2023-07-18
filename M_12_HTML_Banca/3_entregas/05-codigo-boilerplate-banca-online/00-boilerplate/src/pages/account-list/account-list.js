@@ -2,7 +2,7 @@
 //console.log('account-list page');  // Dentro de la consola la veriasmos
 
 //Utilizo la API en el fichero principal
-import { getAccountList } from "./account-list.API";
+import { getAccountList } from "./account-list.api";
 
 //Import el metodo account-helper que me añade la fila
 import { addAccountRows } from "./account-list.helpers";
@@ -24,12 +24,13 @@ getAccountList().then(accountList => {
     //console.log({accountList});   //ASi me sale el nombre de lo que estoy pintando
 //Añado la fila de la lista que me obtiene del servidor
     addAccountRows(viewModelAccountList);
+
     
 //Usamos el elemento onUpdateField
     viewModelAccountList.forEach(account => {
         onUpdateField(`select-${account.id}` , event => {
             const route = event.target.value;
-            // console.log(route);
+            //console.log(route);
             history.push(route);
         });
     });

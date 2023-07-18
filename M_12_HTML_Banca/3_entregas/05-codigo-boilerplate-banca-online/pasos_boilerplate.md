@@ -1,6 +1,6 @@
 1. En el terminal donde tengo todas las dependencias "npm install".
    
-2. CODIGO DEL BACKEND Carpeta SERVER/SRC, en el archivo data.json, aparecen la lista de cuentas y los movimientos de cada.
+2. CODIGO DEL BACKEND Carpeta SERVER/SRC/ data.json, aparecen la lista de cuentas y los movimientos de cada.
 3. En la misma el fichero login, donde tengo los datos para logearme.
 
 4. CODIGO DEL FRONTEND Carpeta SRC, la estructura que tiene esa carpete la podemos encontrar en casos reales.

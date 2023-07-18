@@ -14,6 +14,8 @@ const mapMovementFromApiToViewModel = movements => {
     };
 };
 
+
+//Datos  del entorno de la pagina
 export const mapAccountFromApiToViewModel = account => ({
     ...account,
     alias: account.name,
