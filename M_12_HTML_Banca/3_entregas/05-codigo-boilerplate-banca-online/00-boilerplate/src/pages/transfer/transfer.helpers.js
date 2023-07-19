@@ -7,15 +7,14 @@ const getOption = account => {
 
 export const setAccountOptions = (accounts, selectedId) => {
   const select = document.getElementById('select-account');
-
   accounts.forEach(account => {
     const option = getOption(account);
     select.appendChild(option);
+
   });
 
   if (selectedId) {
     select.value = selectedId;
   }
-
   return select;
 };
