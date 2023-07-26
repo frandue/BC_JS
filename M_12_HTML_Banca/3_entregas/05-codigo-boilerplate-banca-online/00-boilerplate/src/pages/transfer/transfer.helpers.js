@@ -16,5 +16,5 @@ export const setAccountOptions = (accounts, selectedId) => {
   if (selectedId) {
     select.value = selectedId;
   }
-  return select;
+  return select;;
 };

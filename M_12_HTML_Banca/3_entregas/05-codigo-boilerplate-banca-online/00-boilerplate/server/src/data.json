@@ -108,5 +108,19 @@
       "accountId": "3"
     }
   ],
-  "transfer": []
+  "transfer": [
+    {
+      "selectAccount": "Gastos mes",
+      "iban": "ES7921000813610123456789",
+      "name": "Francisco Andueza Silva",
+      "amount": "1234",
+      "concept": "Renta",
+      "day": "1",
+      "month": "2",
+      "year": "3",
+      "email": "fran.stix@gmail.com",
+      "notes": "asdf asdf asdf asdf asdf asdf asdf asdf asdf",
+      "id": 1
+    }
+  ]
 }

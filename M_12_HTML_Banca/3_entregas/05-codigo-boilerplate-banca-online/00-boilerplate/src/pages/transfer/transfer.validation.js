@@ -1,73 +1,100 @@
-import  {Validators, createFormValidation } from '@lemoncode/fonk' ;
+import { Validators, createFormValidation } from '@lemoncode/fonk';
+
+import { iban } from '@lemoncode/fonk-iban-validator';
+
+import { positiveNumber } from '@lemoncode/fonk-positive-number-validator';
+
 // importa lo validadores de la libreria y la cretea un nuevo formulario de validacion.
 
+//// VALORES DE LA FECHA DE HOY
+
+const todayDate = new Date();
+
+const todayDay = todayDate.getDate();
+
+const todayMonth = todayDate.getMonth() + 1;
+
+const todayYear = todayDate.getFullYear();
+
+/////
 const validationSchema = {
-  field: {
     field: {
-        iban: [
+      selectAccount: [
+          {
+           validator: Validators.required,
+           message: 'Campo requerido',
+          },
+        ],
+      iban: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
           },
           {
             validator: iban.validator,
-            message: 'IBAN no válido',
+            message: 'iban no válido',
           },
         ],
-        name: [
+      name: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
           },
         ],
-        amount: [
+      amount: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
           },
           {
             validator: positiveNumber.validator,
-            message: 'Introduce un número correcto',
+            message: 'Introduce un número correcto. Ejp: 123.45',
           },
         ],
-        concept: [
+      concept: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
           },
         ],
-        day: [
+      day: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
-          },
-          {
-            validator: Validators.numeric,
-            message: 'Debe ser un número',
           },
         ],
-        month: [
+      month: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
-          },
-          {
-            validator: Validators.numeric,
-            message: 'Debe ser un número',
           },
         ],
-        year: [
+      year: [
+          {
+            validator: Validators.required,
+            message: 'Campo requerido',
+          },
+////
+          {
+            validator: value => {
+             
+              return {
+                succeeded: false,
+              };
+            },
+          },
+//////
+        ],
+      email: [
           {
             validator: Validators.required,
             message: 'Campo requerido',
           },
           {
-            validator: Validators.numeric,
-            message: 'Debe ser un número',
+            validator: Validators.email,
+            message: 'Email no válido',
           },
         ],
       }
     }
-}
-
-export const formValidarion = createFormValidation(validationSchema);
+export const formValidation = createFormValidation(validationSchema);

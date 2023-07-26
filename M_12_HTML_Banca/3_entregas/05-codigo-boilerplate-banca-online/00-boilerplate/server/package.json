@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "He agregado la dependencia date-fns para verfificar la fecha",
   "main": "index.js",
   "scripts": {
     "start": "json-server --routes ./config/routes.json --middlewares ./src/login.middleware.js ./src/account.middleware.js --watch ./src/data.json"

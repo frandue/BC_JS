@@ -1,6 +1,6 @@
-export const mapAccountFromApiToViewModel = account => {
+export const mapTransferFromViewModelToApi = valueTransfer => { 
     return {
-        ...account,
-        name: account.select-account,
+        ...valueTransfer,
     };
 };
+
