@@ -1,8 +1,8 @@
 import { setAccountOptions } from './transfer.helpers';
 
-import { getAccountList, updateTransfer } from "./transfer.api";
+import { getAccountList, makeTransfer } from "./transfer.api";
 
-import { history } from '../../core/router';
+import { history, routes } from '../../core/router';
 
 import { onUpdateField, onSetError, onSubmitForm, onSetFormErrors } from '../../common/helpers'
 
@@ -12,137 +12,100 @@ import { mapTransferFromViewModelToApi } from './transfer.mapper'
 
 const params = history.getParams();
 
-const hasId = Boolean(params.id); // !! = Boolean
+const isAccountSelected = Boolean(params.id); // !! = Boolean
+const initialAccountId = isAccountSelected ? params.id : 1;
 
 getAccountList().then(accountList => {
-    if (hasId) {
-  //Si voy desde mis cuentas el valor origen esta preseleccionado   
-     setAccountOptions( accountList,params.id )
-  //Si voy directamente a transferencia el valor origen no esta preseleccionado   
-    } else {setAccountOptions( accountList,params )}
-  });
+  setAccountOptions(accountList, initialAccountId);
+});
 
-//Recojo los datos de transferencias  insertAccount
+// Recojo los datos de transferencias  insertAccount
 let valueTransfer = {
-      selectAccount: '',
-      iban: '',
-      name: '',
-      amount: '',
-      concept: '',
-      day: '',
-      month: '',
-      year: '',
-      email: '',
-  };
+  accountId: '',
+  iban: '',
+  name: '',
+  amount: '',
+  concept: '',
+  notes: '',
+  day: '',
+  month: '',
+  year: '',
+  email: '',
+};
 
-/////
+const currentDate = new Date();
+const todayDay = currentDate.getDate();
+const todayMonth = currentDate.getMonth() + 1;
+const todayYear = currentDate.getFullYear();
 
-// Almacena el valor seleccionado en esta variable
-let selectedValue = '';
-if (hasId) {
-    selectedValue = params.id; // Obtén el valor seleccionado y almacénalo en selectedValue
-
-  getAccountList().then(accountList => {
-    const account = accountList.find(account => account.id === selectedValue);
-    selectedValue = account.name;
-    valueTransfer = {
-      ...valueTransfer,
-      selectAccount: selectedValue
-    };
-  })
-  //
-} else {
-// Obtener el elemento <select> con el id "select-account"
-const selectAccountElement = document.getElementById('select-account');
-// Escuchar el evento "change" en el elemento <select>
-selectAccountElement.addEventListener('change', (event) => {
-// Obtén el valor seleccionado y almacénalo en selectedValue
-  selectedValue = event.target.value; 
-getAccountList().then(accountList => {
-  const account = accountList.find(account => account.id === selectedValue);
-  selectedValue = account.name;
+onUpdateField('select-account', event => {
+  const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    selectAccount: selectedValue
+    accountId: value,
   };
-  })
+  //VALIDADCION 
+  formValidation.validateField('select-account', valueTransfer.accountId).then(result => {
+    onSetError('accountId', result);
+  });
 });
-}
-
-/////
-
-/////
-const currentDate = new Date();
-
-const todayDay = currentDate.getDate();
-console.log(todayDay);
-
-const todayMonth = currentDate.getMonth() + 1;
-console.log(todayMonth);
-
-const todayYear = currentDate.getFullYear();
-console.log(todayYear);
-
-
-
-/////
 
 onUpdateField('iban', event => {
   const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    iban: value
+    iban: value,
   };
   //VALIDADCION 
   formValidation.validateField('iban', valueTransfer.iban).then(result => {
     onSetError('iban', result);
+  });
 });
-})
 
 onUpdateField('name', event => {
   const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    name: value
+    name: value,
   };
-// VALIDADCION  
+  // VALIDADCION  
   formValidation.validateField('name', valueTransfer.name).then(result => {
     onSetError('name', result);
+  });
 });
-})
 
 onUpdateField('amount', event => {
   const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    amount: value
+    amount: value,
   };
-// VALIDADCION    
+  // VALIDADCION    
   formValidation.validateField('amount', valueTransfer.amount).then(result => {
     onSetError('amount', result);
+  });
 });
-})
 
 onUpdateField('concept', event => {
   const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    concept: value
+    concept: value,
   };
-// VALIDADCION    
+  // VALIDADCION    
   formValidation.validateField('concept', valueTransfer.concept).then(result => {
     onSetError('concept', result);
+  });
 });
-})
 
+//SIN VALIDADCION -> No es necesario
 onUpdateField('notes', event => {
   const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    notes: value
+    notes: value,
   };
-})
-//SIN VALIDADCION -> No es necesario
+});
 
 onUpdateField('day', event => {
   const value = event.target.value;
@@ -150,49 +113,38 @@ onUpdateField('day', event => {
     ...valueTransfer,
     day: value,
   };
-// VALIDADCION    
+  // VALIDACIONES    
   formValidation.validateField('day', valueTransfer.day).then(result => {
-    //
     onSetError('day', result);
-    //
+  });
+  validateDate();
 });
-})
 
 onUpdateField('month', event => {
   const value = event.target.value;
   valueTransfer = {
     ...valueTransfer,
-    month: value,
+    month: Number(value),
   };
-// VALIDADCION    
+  // VALIDACIONES    
   formValidation.validateField('month', valueTransfer.month).then(result => {
     onSetError('month', result);
+  });
+  validateDate();
 });
-})
 
 onUpdateField('year', event => {
   const value = event.target.value;
-  const year = value;
-  let isValidYear = (year > todayYear);
   valueTransfer = {
     ...valueTransfer,
     year: value,
   };
-  
-
-// VALIDADCION    
-    //result.succeeded = true
+  // VALIDACIONES    
   formValidation.validateField('year', valueTransfer.year).then(result => {
-    console.log(result);
-    onSetError('year', result);
-    if(year>=todayYear){
-      {result.succeeded = true}
-    } else {
-      {result.succeeded = false}
-    };
-    console.log(result);
+    onSetError('year', result);   
+  });
+  validateDate();
 });
-})
 
 onUpdateField('email', event => {
   const value = event.target.value;
@@ -200,21 +152,32 @@ onUpdateField('email', event => {
     ...valueTransfer,
     email: value
   };
-  console.log(valueTransfer);
-// VALIDADCION    
+  // VALIDADCION    
   formValidation.validateField('email', valueTransfer.email).then(result => {
     onSetError('email', result);
+  });
 });
-})
+
+const validateDate = () => {
+  formValidation.validateField('date', new Date(`${valueTransfer.year}-${valueTransfer.month}-${valueTransfer.day}`)).then(result => {
+    onSetError('date', result);
+  });
+}
 
 //Export la traferencia con el boton
  onSubmitForm('transfer-button', () => {
-  const apiTransfer = mapTransferFromViewModelToApi( valueTransfer);
-  formValidation.validateForm(apiTransfer).then(result => {
+  formValidation.validateForm(valueTransfer).then(result => {
       onSetFormErrors(result);
-
       if (result.succeeded) {
-        updateTransfer(apiTransfer).then(() => { history.back });
+        const apiTransfer = mapTransferFromViewModelToApi(valueTransfer);
+        makeTransfer(apiTransfer).then((response) => {
+          if (response.id) {
+            alert("Transferencia realizada con éxito");
+            history.push(routes.accountList);
+          } else {
+            alert("Ha habido un problema. No se ha podido realizar la transferencia");
+          }
+        });
       }
   });      
  });

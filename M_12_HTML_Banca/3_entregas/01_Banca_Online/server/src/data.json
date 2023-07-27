@@ -108,5 +108,39 @@
       "accountId": "3"
     }
   ],
-  "transfer": []
+  "transfer": [
+    {
+      "accountId": "1",
+      "targetIban": "ES7921000813610123456789",
+      "receiver": "Francisco Andueza Silva",
+      "amount": "1234",
+      "concept": "Renta",
+      "notes": "asdf asdf asdf asdf asdf asdf asdf asdf asdf",
+      "date": "2023-07-27T22:00:00.000Z",
+      "email": "fran.stix@gmail.com",
+      "id": 1
+    },
+    {
+      "accountId": "1",
+      "targetIban": "ES7921000813610123456789",
+      "receiver": "Francisco",
+      "amount": "1234",
+      "concept": "Renta",
+      "notes": "asdf asdf asdf asdf asdf asdf asdf asdf asdf",
+      "date": "2024-07-28T22:00:00.000Z",
+      "email": "fjanduezaiccp@gmail.com",
+      "id": 2
+    },
+    {
+      "accountId": "2",
+      "targetIban": "ES7921000813610123456789",
+      "receiver": "Francisco Andueza Silva",
+      "amount": "1234",
+      "concept": "Renta",
+      "notes": "asdf asdf asdf asdf asdf asdf asdf asdf asdf",
+      "date": "2023-07-28T22:00:00.000Z",
+      "email": "fran_xu22dueza@hotmail.es",
+      "id": 3
+    }
+  ]
 }

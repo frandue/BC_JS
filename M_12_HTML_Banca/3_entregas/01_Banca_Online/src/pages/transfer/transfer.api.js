@@ -12,4 +12,4 @@ export const getAccountList = () =>Axios.get(urlAccountList).then(response => {
 const urlTransfers =  `${process.env.BASE_API_URL}/transfer`;
 
 //Funcion para exportar las transferencias
-export const updateTransfer = transfer => Axios.post(urlTransfers, transfer).then(({data}) => data);
+export const makeTransfer = transfer => Axios.post(urlTransfers, transfer).then(({data}) => data);
