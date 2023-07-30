@@ -1,29 +1,31 @@
+//Lista de objetos
 const reservas = [
+
   {
     tipoHabitacion: "standard",
     pax: 1,
     noches: 3
-  },
+},
   {
     tipoHabitacion: "standard",
     pax: 1,
     noches: 4
-  },
+},
   {
     tipoHabitacion: "suite",
     pax: 2,
     noches: 1
-  }
+}
 ];
 
-class ClaseBase {
-  constructor(reservas) {
+class ClaseBase {   //Clase base
+  constructor(reservas) {   //Lista con 4 propiedades
     this._preciosHabitaciones = [100, 150];
     this._reservas = reservas;
     this._subtotal = 0;
     this._total = 0;
   }
-
+// lo siguientes son metodos.
   calcularFactorRoom(tipoRoom) {
     return 10;    //Prueba para la clase base
   }
@@ -84,12 +86,12 @@ class ClaseParticular extends ClaseBase {
 }
 
 class ClaseTour extends ClaseBase {
-  constructor(reservas) {
-    super(reservas);
-  }
+  // constructor(reservas) {
+  //   super(reservas);     //No es necesario porque no hago ningun cambio.
+  // }
   
   calcularFactorRoom(tipoRoom) {
-    return this._preciosHabitaciones[0];   r
+    return this._preciosHabitaciones[0];   
   }
 
   calcularDescuento() {
