@@ -87,7 +87,7 @@ class ClaseParticular extends ClaseBase {
 
 class ClaseTour extends ClaseBase {
   // constructor(reservas) {
-  //   super(reservas);     //No es necesario porque no hago ningun cambio.
+  //   super(reservas);     //Sobra porque no hago ningun cambio.
   // }
   
   calcularFactorRoom(tipoRoom) {
