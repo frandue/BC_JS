@@ -42,11 +42,7 @@ class ClaseBase {
   calculaSubtotal() {
     this._subtotal = this._reservas.reduce((acumulado, lineaReserva) => {
       const { tipoHabitacion, noches, pax, desayuno } = lineaReserva;
-      if (pax < 2) {
-        return acumulado + noches * this.calcularFactorRoom(tipoHabitacion) + pax * noches * this.suplementoDesayunoPesona(desayuno);
-      } else {
-        return (acumulado + noches * this.calcularFactorRoom(tipoHabitacion) + pax * noches * this.suplementoDesayunoPesona(desayuno)+ this.suplementoPersonaAdicional(pax));
-      }
+      return (acumulado + noches * this.calcularFactorRoom(tipoHabitacion) + pax * noches * this.suplementoDesayunoPesona(desayuno)+ this.suplementoPersonaAdicional(pax));
     }, 0);
     this._subtotal = Number(this._subtotal.toFixed(2));
   }
