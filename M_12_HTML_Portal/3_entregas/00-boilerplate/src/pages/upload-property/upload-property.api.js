@@ -22,4 +22,8 @@ const urlContact = `${process.env.BASE_API_URL}/properties`;
 
 //Funcion para exportar las transferencias
 export const makePropertie = contact => Axios.post(urlContact, contact).then(({data}) => data);
+
+export const getProperties = () => 
+Axios.get(`${urlContact}`).then(({data}) => 
+  data);
     

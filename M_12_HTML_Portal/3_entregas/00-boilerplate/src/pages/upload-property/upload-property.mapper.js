@@ -1,4 +1,4 @@
-export const mapPropertyFromViewModelToApi = (propertyValue, saleTypeList) => { 
+export const mapPropertyFromViewModelToApi = (propertyValue) => { 
   return {
     Id: propertyValue.accountId,
     title: propertyValue.title,
@@ -6,7 +6,7 @@ export const mapPropertyFromViewModelToApi = (propertyValue, saleTypeList) => {
     email: propertyValue.email,
     phone: propertyValue.phone,
     price: propertyValue.price,
-    saleTypeIds: propertyValue.saleTypes,//mapSaleTypeNameToEquipmentNames(propertyValue.saleTypeIds, saleTypeList ),
+    saleTypeIds: propertyValue.saleTypes,
     address: propertyValue.address,
     city: propertyValue.city,
     provinceId: propertyValue.province ,
@@ -15,7 +15,7 @@ export const mapPropertyFromViewModelToApi = (propertyValue, saleTypeList) => {
     bathrooms: propertyValue.bathrooms,
     locationUrl: propertyValue.locationUrl,
     mainFeatures: propertyValue.mainFeatures,
-    equipmentIds: propertyValue.equipmentIds,
+    equipmentIds: propertyValue.equipments,
     images: propertyValue.images,
   };
 };
